@@ -3,6 +3,7 @@ using Tasks.Application.Services.Implementation;
 using Tasks.Infrastructure.Repositories.Implementation;
 using Tasks.WebApi.Services.Interfaces;
 using Tasks.Domain.Repositories.Interfaces;
+using Tasks.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +13,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//builder.Services.AddDbContext<TasksDbContext>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("TasksDBConnection")));
+builder.Services.AddDbContext<TaskingDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("TasksDBConnection")));
 builder.Services.AddTransient<IUsersService, UsersService>();
 builder.Services.AddTransient<ITasksService, TasksService>();
 builder.Services.AddTransient<IGeneralService, GeneralService>();

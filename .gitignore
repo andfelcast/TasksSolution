@@ -53,3 +53,6 @@ CodeCoverage/
 TestResult.xml
 nunit-*.xml
 /.vs/TasksSolution.slnx/v18
+/.vs/TasksSolution/CopilotIndices/18.0.981.45449
+/.vs/TasksSolution.slnx/FileContentIndex
+/.vs/TasksSolution.slnx/DesignTimeBuild
