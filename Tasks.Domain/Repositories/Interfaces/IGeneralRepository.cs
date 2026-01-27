@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tasks.Domain.Entities;
 
 namespace Tasks.Domain.Repositories.Interfaces
 {
     public interface IGeneralRepository
     {
+        Task<List<Status>> GetStatuses();
     }
 }

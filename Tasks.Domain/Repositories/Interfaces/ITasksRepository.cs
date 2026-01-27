@@ -8,5 +8,6 @@ namespace Tasks.Domain.Repositories.Interfaces
 {
     public interface ITasksRepository
     {
+        Task<List<Entities.Task>> GetAll();
     }
 }

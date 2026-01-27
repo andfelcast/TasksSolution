@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using Tasks.Infrastructure.Entities;
+using Tasks.Domain.Entities;
 
 namespace Tasks.Infrastructure.Persistence;
 
@@ -18,7 +18,7 @@ public partial class TaskingDbContext : DbContext
 
     public virtual DbSet<Status> Statuses { get; set; }
 
-    public virtual DbSet<Entities.Task> Tasks { get; set; }
+    public virtual DbSet<Domain.Entities.Task> Tasks { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
    
@@ -29,7 +29,7 @@ public partial class TaskingDbContext : DbContext
             entity.Property(e => e.Name).HasMaxLength(20);
         });
 
-        modelBuilder.Entity<Entities.Task>(entity =>
+        modelBuilder.Entity<Domain.Entities.Task>(entity =>
         {
             entity.Property(e => e.CreationDate).HasColumnType("datetime");
             entity.Property(e => e.Name).HasMaxLength(50);

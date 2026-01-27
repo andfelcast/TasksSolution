@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="Tasks.Domain/Tasks.Domain.csproj" />
   <Project Path="Tasks.Infrastructure/Tasks.Infrastructure.csproj" />
+  <Project Path="Tasks.Utilities/Tasks.Utilities.csproj" Id="7fe4c9ca-f557-42f4-aa55-f85a14deaa60" />
   <Project Path="Tasks.WebApi/Tasks.WebApi.csproj" />
 </Solution>

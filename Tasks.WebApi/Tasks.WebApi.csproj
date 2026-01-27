@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Tasks.Domain\Tasks.Domain.csproj" />
     <ProjectReference Include="..\Tasks.Infrastructure\Tasks.Infrastructure.csproj" />
+    <ProjectReference Include="..\Tasks.Utilities\Tasks.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

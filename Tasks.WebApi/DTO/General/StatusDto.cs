@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace Tasks.Application.DTO.General
 {
-    internal class StatusDto
+    public class StatusDto
     {
+        public int Id { get; set; }
+        public required string Name { get; set; }
     }
 }

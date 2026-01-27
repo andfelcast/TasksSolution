@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Tasks.Infrastructure.Entities;
+namespace Tasks.Domain.Entities;
 
 public partial class Task
 {
