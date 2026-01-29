@@ -7,6 +7,17 @@
         </button>
     </div>    
 </div>
+<div class="row">
+    <div class="col-3">
+        <label for="statusFilter" class="form-label">Filter by state</label>&nbsp;&nbsp;
+        <select id="statusFilter" (change)="FilterByState($event)">
+            <option value="0">All</option>
+            @for(item of lstStatus; track item.id){
+                <option value="{{ item.id }}">{{ item.name}}</option>                                
+            }
+        </select>
+    </div>
+</div>
 <br />
 <table class="table table-striped">
     <thead class="table-dark">
@@ -27,7 +38,7 @@
         </tr>        
     </thead>
     <tbody>
-        @for(item of lstTasks; track item.id){
+        @for(item of lstTasksInfo; track item.id){
             <tr>
                 <td>{{ item.name }}</td>
                 <td>{{ item.userName }} </td>

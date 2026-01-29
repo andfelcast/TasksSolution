@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from '../../../services/task-service';
 import { Task } from '../../../classes/Task';
 import Swal from 'sweetalert2';
+import { Basic } from '../../../classes/General';
+import { GeneralService } from '../../../services/general-service';
 
 @Component({
   selector: 'app-tasks-info',
@@ -14,20 +16,45 @@ export class TasksInfo {
   private router = inject(Router);
   private route =  inject(ActivatedRoute);
   private service = inject(TaskService);
+  private genService = inject(GeneralService);
   private cdr =  inject(ChangeDetectorRef); 
   lstTasks:Task[] = [];
+  lstTasksInfo:Task[] = [];
+  lstStatus:Basic[] = [];
   ngOnInit(): void {
+    this.LoadStatus();
     this.LoadTasks();
+  }
+  LoadStatus(){
+    this.genService.ListStatus().subscribe({
+      next:(data) =>{        
+        if(data.isValid){                           
+          this.lstStatus = data.resultData;   
+          this.cdr.detectChanges();       
+        }        
+      }
+    });
   }
   LoadTasks(){
     this.service.List().subscribe({
       next:(data) =>{        
         if(data.isValid){                           
-          this.lstTasks = data.resultData;   
+          this.lstTasks = data.resultData;  
+          this.lstTasksInfo = data.resultData; 
           this.cdr.detectChanges();       
         }        
       }
     });
+  }
+  FilterByState(event: Event){
+     const selectedValue = (event.target as HTMLSelectElement).value;
+     if(selectedValue != '0'){
+        this.lstTasksInfo = this.lstTasks.filter(x => x.statusId == Number(selectedValue));
+     }
+     else{
+      this.lstTasksInfo = this.lstTasks;
+     }
+     this.cdr.detectChanges();
   }
   Create(){
     this.router.navigate(['../createTask'], { relativeTo: this.route })
