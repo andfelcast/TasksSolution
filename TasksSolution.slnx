@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Tasks.Domain/Tasks.Domain.csproj" />
+  <Project Path="Tasks.Infrastructure/Tasks.Infrastructure.csproj" />
+  <Project Path="Tasks.WebApi/Tasks.WebApi.csproj" />
+</Solution>

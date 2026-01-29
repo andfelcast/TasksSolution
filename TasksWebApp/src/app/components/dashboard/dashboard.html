@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-auto bg-light sticky-top">
+            <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
+                <a href="/" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+                    <i class="bi bi-wrench-adjustable-circle-fill"></i>
+                </a>
+                <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
+                    <li class="nav-item">
+                        <a href="/home/users" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+                            <i class="bi bi-person-fill-gear"></i>&nbsp;Users
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/home/tasks" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
+                            <i class="bi bi-list-task"></i>&nbsp;Tasks
+                        </a>
+                    </li>
+                    
+                </ul>                
+            </div>
+        </div>
+        <div class="col-sm p-3 min-vh-100">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

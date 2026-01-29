@@ -1,0 +1,58 @@
+<h1>Tasks</h1>
+<br />
+<div class="row" style="display: flex; justify-content: flex-end;">
+    <div class="col-2">
+        <button class="btn btn-primary" (click)="Create()">
+        <i class="bi bi-person-plus-fill"></i>&nbsp;Add new
+        </button>
+    </div>    
+</div>
+<div class="row">
+    <div class="col-3">
+        <label for="statusFilter" class="form-label">Filter by state</label>&nbsp;&nbsp;    
+        <select id="statusFilter" (change)="FilterByState($event)">
+            <option value="0">All</option>
+            @for(item of lstStatus; track item.id){
+                <option value="{{ item.id }}">{{ item.name}}</option>                                
+            }
+        </select>
+    </div>
+</div>
+<br />
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th class="col-3">
+                Title
+            </th>
+            <th class="col-2">
+                User
+            </th>
+            <th class="col-2">
+                Duration(hours)
+            </th>
+            <th class="col-2">
+                Status
+            </th>            
+            <th></th>
+        </tr>        
+    </thead>
+    <tbody>
+        @for(item of lstTasksInfo; track item.id){
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.userName }} </td>
+                <td>{{ item.duration }} </td>
+                <td>{{ item.statusName }}</td>   
+                <td>
+                    <button class="btn btn-info" (click)="Details(item.id)">
+                        <i class="bi bi-info-square"></i>&nbsp; Details
+                    </button>&nbsp;&nbsp;
+                    <button class="btn btn-warning" (click)="ChangeStatus(item.id)">
+                        <i class="bi bi-arrow-bar-right"></i>&nbsp; Change Status
+                    </button>
+                </td>             
+            </tr>
+        }
+    </tbody>
+</table>
