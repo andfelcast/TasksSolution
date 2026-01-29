@@ -1,0 +1,45 @@
+<h1>Create New Task</h1>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <div class="p-4 border rounded">
+            <form [formGroup]="createForm" (ngSubmit)="Save()">
+                <div class="mb-3">
+                    <label for="titleInput" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="titleInput" formControlName="title" placeholder="Enter task title"/>            
+                    @if(createForm.get('title')?.invalid && createForm.get('title')?.touched && createForm.get('title')?.errors!['required']){
+                        <div class="text-danger mt-1">
+                            This field is required
+                        </div>
+                    }                    
+                    <label for="durationInput" class="form-label">Duration</label>
+                    <input type="number" min="0" step="1" class="form-control" id="durationInput" formControlName="duration" placeholder="Enter task duration"/>            
+                    @if(createForm.get('duration')?.invalid && createForm.get('duration')?.touched && createForm.get('duration')?.errors!['required']){
+                        <div class="text-danger mt-1">
+                            This field is required
+                        </div>
+                    }            
+                    <label for="userInput" class="form-label">Assign to user</label>
+                    <select id="userInput" class="form-control" formControlName="userId">
+                        <option value="">Select one</option>
+                        @for(item of lstUsers; track item.id){
+                            <option value="{{ item.id }}">{{ item.firstName}} {{ item.lastName }}</option>                                
+                        }
+                    </select>                    
+                    @if(createForm.get('userId')?.invalid && createForm.get('userId')?.touched && createForm.get('userId')?.errors!['required']){
+                        <div class="text-danger mt-1">
+                            This field is required
+                        </div>
+                    }                                
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    Save
+                </button>
+                &nbsp;
+                <button type="button" class="btn btn-secondary" (click)="GoBack()" >
+                    Go back
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -4,6 +4,7 @@ using Tasks.Infrastructure.Repositories.Implementation;
 using Tasks.WebApi.Services.Interfaces;
 using Tasks.Domain.Repositories.Interfaces;
 using Tasks.Infrastructure.Persistence;
+using Tasks.WebApi.Custom;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,9 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddExceptionHandler<AppExceptionHandler>(); // Register the handler
+builder.Services.AddProblemDetails();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -42,6 +46,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors("NewPolicy");
+
+app.UseExceptionHandler();
 
 app.UseAuthorization();
 

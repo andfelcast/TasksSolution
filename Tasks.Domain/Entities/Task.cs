@@ -11,11 +11,7 @@ public partial class Task
 
     public int UserId { get; set; }
 
-    public int StatusId { get; set; }
-
-    public DateOnly StartDate { get; set; }
-
-    public DateOnly EndDate { get; set; }
+    public int StatusId { get; set; }    
 
     public int Duration { get; set; }
 

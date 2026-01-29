@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tasks.Application.DTO.Business;
+﻿using Tasks.Application.DTO.Business;
 using Tasks.Application.DTO.General;
 using Tasks.Domain.Entities;
 
@@ -15,13 +10,26 @@ namespace Tasks.Application
             return new TaskDto
             {
                 AdditionalInfo = entity.AdditionalInfo,
-                Duration = entity.Duration,
-                EndDate = entity.EndDate,
+                Duration = entity.Duration,                
                 Id = entity.Id,
-                Name = entity.Name,
-                StartDate = entity.StartDate,
+                Name = entity.Name,                
                 StatusId = entity.StatusId,
                 StatusName = entity.Status.Name,
+                UserId = entity.UserId,
+                UserName = entity.User.FirstName + " " + entity.User.LastName,
+            };
+        }
+
+        public static UserDto ConvertToDto(User entity)
+        {
+            return new UserDto
+            {
+                DocumentNumber = entity.DocumentNumber,
+                Email = entity.Email,
+                FirstName = entity.FirstName,
+                LastName = entity.LastName,
+                PhoneNumber = entity.PhoneNumber,
+                Id = entity.Id                
             };
         }
 
@@ -31,6 +39,33 @@ namespace Tasks.Application
             {                
                 Id = entity.Id,
                 Name = entity.Name,                
+            };
+        }
+
+        public static Domain.Entities.Task ConvertToEntity(TaskDto value)
+        {
+            return new Domain.Entities.Task
+            {
+                AdditionalInfo = value.AdditionalInfo,
+                Duration = value.Duration,
+                CreationDate = value.CreationDate,
+                Id = value.Id,
+                Name = value.Name,
+                StatusId = value.StatusId,
+                UserId = value.UserId,
+            };
+        }
+
+        public static User ConvertToEntity(UserDto value)
+        {
+            return new User
+            {
+                DocumentNumber = value.DocumentNumber,
+                Email = value.Email,
+                FirstName = value.FirstName,
+                LastName = value.LastName,
+                PhoneNumber = value.PhoneNumber,
+                Id = value.Id
             };
         }
     }

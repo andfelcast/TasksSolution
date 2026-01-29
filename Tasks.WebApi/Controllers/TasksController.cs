@@ -29,7 +29,7 @@ namespace Tasks.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            ResponseDto response = await _service.GetAllTasks();
+            ResponseDto response = await _service.GetById(id);
             return response.IsValid ? Ok(response) : NotFound(response);
         }
 
@@ -37,22 +37,16 @@ namespace Tasks.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] TaskDto value)
         {
-            ResponseDto response = await _service.GetAllTasks();
-            return response.IsValid ? Ok(response) : NotFound(response);
+            ResponseDto response = await _service.CreateNew(value);
+            return response.IsValid ? Ok(response) : BadRequest(response);
         }
 
         // PUT api/<TasksController>/5
         [HttpPut("{id}/status")]
-        public async Task<IActionResult> Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(int id)
         {
-            ResponseDto response = await _service.GetAllTasks();
-            return response.IsValid ? Ok(response) : NotFound(response);
-        }
-
-        //// DELETE api/<TasksController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+            ResponseDto response = await _service.ChangeStatus(id);
+            return response.IsValid ? Ok(response) : BadRequest(response);
+        }        
     }
 }
